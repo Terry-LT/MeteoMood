@@ -24,13 +24,38 @@
 ---
 
 ## Installation
-1. Clone this repository:  
-   ```bash
+1. **Clone this repository**:  
+   ```
    git clone https://github.com/yourusername/MeteoMood.git
-2. Install dependencies
-    ```bash
+   cd MeteoMood
+   ```
+2. Create a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+   ```
+3. Activate the virtual environment:
+   
+Windows:
+   ```bash
+   venv\Scripts\activate
+   ```
+
+Linux / macOS:
+   ```bash
+   source venv/bin/activate
+   ```
+
+4. Install dependencies:
+   ```bash
    pip install -r requirements.txt
-3. Create .env and add variable TELEGRAM_BOT_TOKEN=YOUR_TOKEN
-4. Run the bot:
-    ```bash
-    python main.py
+   ```
+
+5. Create a .env file and add your Telegram token:
+   ```bash
+   TELEGRAM_BOT_TOKEN=YOUR_TOKEN
+   ```
+
+6. Run the bot:
+   ```bash
+   python main.py
+   ```

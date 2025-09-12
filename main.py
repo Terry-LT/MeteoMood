@@ -76,7 +76,7 @@ async def get_weather(latitude: float, longitude: float) -> str:
 
             if season == "winter":
                 if temp < 0:
-                    advice.append("🧥 Dress very warmly, it’s freezing!")
+                    advice.append("🧥 Dress very warmly, it’requirements.txt freezing!")
                 elif temp < 10:
                     advice.append("🧣 Wear a warm jacket and maybe a scarf.")
                 else:
