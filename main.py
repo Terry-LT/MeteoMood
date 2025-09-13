@@ -3,7 +3,7 @@ import platform
 import os
 import httpx
 from dotenv import load_dotenv
-from datetime import datetime
+from datetime import datetime, timezone
 from dateutil import parser
 from telegram import Update, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
@@ -52,8 +52,15 @@ async def get_weather(latitude: float, longitude: float) -> str:
             if current_time in times:
                 idx = times.index(current_time)
             else:
-                now = datetime.utcnow()
-                hour_diffs = [abs((parser.isoparse(t) - now).total_seconds()) for t in times]
+                # old:
+                #now = datetime.utcnow()
+                #hour_diffs = [abs((parser.isoparse(t) - now).total_seconds()) for t in times]
+                # new:
+                now = datetime.now(timezone.utc)
+                hour_diffs = [
+                    abs((parser.isoparse(t).astimezone(timezone.utc) - now).total_seconds())
+                    for t in times
+                ]
                 idx = hour_diffs.index(min(hour_diffs))
 
             precipitation = prec[idx]
